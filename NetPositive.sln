@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32510.428
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetPositive", "NetPositive\NetPositive.csproj", "{F86AAAC7-209E-4D17-852B-54849AEA4285}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F86AAAC7-209E-4D17-852B-54849AEA4285}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F86AAAC7-209E-4D17-852B-54849AEA4285}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F86AAAC7-209E-4D17-852B-54849AEA4285}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F86AAAC7-209E-4D17-852B-54849AEA4285}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E749B49B-979F-418E-A241-B9A3EB01681D}
+	EndGlobalSection
+EndGlobal

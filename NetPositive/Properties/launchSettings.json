@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "NetPositive": {
+      "commandName": "Project",
+      "commandLineArgs": "-r -t C:\\Windows\\ -O test -S GenericFileMethodScanner:MetaDeserialization"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+﻿[
+  [
+    {
+      "marker": [
+        "Calls(.*BinaryFormatter::Deserialize.*)",
+        "SignatureMatches(.*::.*(Copy|Clone).*)"
+      ],
+      "risk": "Low",
+      "desc": "Method calls BinaryFormatter::Deserialize, but is likely a deep clone"
+    },
+    {
+      "marker": [
+        "Calls(.*BinaryFormatter::Deserialize.*)",
+        "Not(ClassCalls(.*BinaryFormatter::set_Binder.*))"
+      ],
+      "risk": "High",
+      "desc": "Method calls BinaryFormatter::Deserialize and doesn't set a Binder anywhere"
+    },
+    {
+      "marker": [
+        "Calls(.*BinaryFormatter::Deserialize.*)",
+        "Not(Calls(.*BinaryFormatter::set_Binder.*))"
+      ],
+      "risk": "Maybe",
+      "desc": "Method calls BinaryFormatter::Deserialize, but sets a binder somewhere in the class"
+    },
+    {
+      "marker": [
+        "Calls(.*BinaryFormatter::Deserialize.*)"
+      ],
+      "risk": "Low",
+      "desc": "Method calls BinaryFormatter::Deserialize, but sets a binder"
+    }
+  ]
+]
