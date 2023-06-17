@@ -1,0 +1,56 @@
+﻿[
+  [
+    {
+      "marker": [
+        "Calls(.*File::Move.*)"
+      ],
+      "risk": "Medium",
+      "desc": "Method calls File::Move"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*File::Copy.*)"
+      ],
+      "risk": "Medium",
+      "desc": "Method calls File::Copy"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*File::Replace.*)"
+      ],
+      "risk": "Medium",
+      "desc": "Method calls File::Replace"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*FileInfo::CopyTo.*)"
+      ],
+      "risk": "Low",
+      "desc": "Method calls FileInfo::CopyTo"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*FileInfo::Replace.*)"
+      ],
+      "risk": "Low",
+      "desc": "Method calls FileInfo::Replace"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*FileInfo::MoveTo.*)"
+      ],
+      "risk": "Low",
+      "desc": "Method calls FileInfo::MoveTo"
+    }
+  ]
+]

@@ -1,0 +1,11 @@
+﻿[
+  [
+    {
+      "marker": [
+        "Calls(.*File.*::.*Write.*)"
+      ],
+      "risk": "Low",
+      "desc": "Method writes to a file"
+    }
+  ]
+]

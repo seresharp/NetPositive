@@ -14,7 +14,7 @@ namespace NetPositive
             ScanArguments result = new ScanArguments();
             for(int i=0; i<argv.Length; i++)
             {
-                if( argv[i]=="-r" )
+                if(argv[i]=="-r" )
                 {
                     result.recursive = getNextArgAsBool(argv, true, ref i);
                 }
@@ -33,6 +33,11 @@ namespace NetPositive
                 else if(argv[i] == "-O")
                 {
                     result.outputPath = getNextArgAsString(argv, null, ref i);
+                }
+                else if (argv[i] == "-h" || argv[i]=="--help")
+                {
+                    PrintHelp();
+                    result.printHelp = true;
                 }
             }
             return result;
@@ -82,6 +87,17 @@ namespace NetPositive
             }
             idx++;
             return argv[idx].Split(";");
+        }
+
+        public static void PrintHelp()
+        {
+            Console.WriteLine("Usage: NetPositive [-r] -t target [--allowPathEscape] [-S scanSpec] [-O outputDir]");
+            Console.WriteLine();
+            Console.WriteLine("\t-r\t\t\tRecursively enumerate target directories");
+            Console.WriteLine("\t-t\t\t\tTarget to scan, can be supplied multiple times and be a file or directory");
+            Console.WriteLine("\t--allowPathEscape\tAllow the file enumeration to access directories outside supplied target paths");
+            Console.WriteLine("\t-S\t\t\tScan Specification, for example: GenericFileMethodScanner:MetaDeserialization");
+            Console.WriteLine("\t-O\t\t\tOutput directory to write results to.");
         }
     }
 }

@@ -1,0 +1,20 @@
+﻿[
+  [
+    {
+      "marker": [
+        "Calls(.*File::Delete.*)"
+      ],
+      "risk": "Medium",
+      "desc": "Method calls File::Delete"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*FileInfo::Delete.*)"
+      ],
+      "risk": "Low",
+      "desc": "Method calls FileInfo::Delete"
+    }
+  ]
+]

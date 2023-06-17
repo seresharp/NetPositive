@@ -1,0 +1,54 @@
+﻿[
+  [
+    {
+      "marker": [
+        "Calls(.*IFormatter::Deserialize.*)"
+      ],
+      "risk": "Maybe",
+      "desc": "Method performs generic deserialization and could potentially be dangerous"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*XamlReader::Load.*)"
+      ],
+      "risk": "High",
+      "desc": "Method uses XamlReader::Load which allows arbitrary code execution"
+    },
+    {
+      "marker": [
+        "Calls(.*XamlReader::Parse.*)"
+      ],
+      "risk": "High",
+      "desc": "Method uses XamlReader::Parse which allows arbitrary code execution"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*SoapFormatter::Deserialize.*)"
+      ],
+      "risk": "High",
+      "desc": "Method calls SoapFormatter::Deserialize which allows arbitrary code execution"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*LosFormatter::Deserialize.*)"
+      ],
+      "risk": "High",
+      "desc": "Method calls LosFormatter::Deserialize which allows arbitrary code execution"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*NetDataContractSerializer::Deserialize.*)"
+      ],
+      "risk": "High",
+      "desc": "Method calls NetDataContractSerializer::Deserialize which allows arbitrary code execution"
+    }
+  ]
+]

@@ -1,0 +1,11 @@
+﻿[
+  [
+    {
+      "marker": [
+        "Calls(.*Path::Combine.*)"
+      ],
+      "risk": "Maybe",
+      "desc": "Uses Path.Combine. If argument is user controlled, full path can be controlled and be used to steal NTLM hashes or trigger unintended reads/writes."
+    }
+  ]
+]

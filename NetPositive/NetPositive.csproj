@@ -10,6 +10,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Definitions\Methods\DangerousDeserialization.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Definitions\Methods\IndirectDeserialization.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Definitions\Methods\FileWrite.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Definitions\Methods\MetaDeserialization.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

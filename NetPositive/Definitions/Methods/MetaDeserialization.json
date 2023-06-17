@@ -1,3 +1,5 @@
 ﻿[
-  "Import:BinaryFormatter.json"
+  "Import:BinaryFormatter.json",
+  "Import:DangerousDeserialization.json",
+  "Import:IndirectDeserialization.json"
 ]

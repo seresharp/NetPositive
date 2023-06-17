@@ -1,0 +1,92 @@
+﻿[
+  [
+    {
+      "marker": [
+        "Calls(.*Activity::Load.*)"
+      ],
+      "risk": "High",
+      "desc": "Method calls Activity.Load, which calls BinaryFormatter.Deserialize internally"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*AxHostState::ctor.*)"
+      ],
+      "risk": "High",
+      "desc": "Method calls the constructor of AxHostState, which calls BinaryFormatter.Deserialize internally"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*BinaryClientFormatterSink.*)"
+      ],
+      "risk": "High",
+      "desc": "Method uses BinaryClientFormatterSink, which calls BinaryFormatter.Deserialize internally"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*BinaryServerFormatterSink.*)"
+      ],
+      "risk": "High",
+      "desc": "Method uses BinaryServerFormatterSink, which calls BinaryFormatter.Deserialize internally"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*BinaryServerFormatterSinkProvider.*)"
+      ],
+      "risk": "High",
+      "desc": "Method uses BinaryServerFormatterSinkProvider, which calls BinaryFormatter.Deserialize internally"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*DesigntimeLicenseContextSerializer.*)"
+      ],
+      "risk": "High",
+      "desc": "Method uses DesigntimeLicenseContextSerializer, which calls BinaryFormatter.Deserialize internally"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*ObjectStateFormatter::Deserialize.*)"
+      ],
+      "risk": "High",
+      "desc": "Method calls ObjectStateFormatter::Deserialize, which calls BinaryFormatter.Deserialize internally"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*SessionSecurityTokenHandler::ReadToken.*)"
+      ],
+      "risk": "High",
+      "desc": "Method calls SessionSecurityTokenHandler::ReadToken, which calls BinaryFormatter.Deserialize internally"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*IsolatedStorageFileEnumerator.*)"
+      ],
+      "risk": "High",
+      "desc": "Method uses IsolatedStorageFileEnumerator, which calls BinaryFormatter.Deserialize internally"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*IsolatedStorageFile::GetEnumerator.*)"
+      ],
+      "risk": "High",
+      "desc": "Method creates IsolatedStorageFileEnumerator, which calls BinaryFormatter.Deserialize internally"
+    }
+  ]
+]

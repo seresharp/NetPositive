@@ -1,0 +1,20 @@
+﻿[
+  [
+    {
+      "marker": [
+        "Calls(.*System.Diagnostics.Process::Start.*)"
+      ],
+      "risk": "High",
+      "desc": "Method starts an external process"
+    }
+  ],
+  [
+    {
+      "marker": [
+        "Calls(.*System.Diagnostics.ProcessStartInfo.*)"
+      ],
+      "risk": "High",
+      "desc": "Method is setting up the start of an external process"
+    }
+  ]
+]

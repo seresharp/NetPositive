@@ -12,6 +12,8 @@ namespace NetPositive
         static void Main(string[] args)
         {
             ScanArguments scanArguments = ArgumentParser.ParseArguments(args);
+            if (scanArguments.printHelp)
+                return;
             FileIterator scanTargets = new FileIterator(scanArguments.basePaths.ToArray(), scanArguments.recursive, scanArguments.allowPathEscape);
             
             //Initialize Scanning Modules from CLI Spec
@@ -20,6 +22,7 @@ namespace NetPositive
             if(scanners.Count()==0)
             {
                 Console.WriteLine("Error: No scanners specified, aborting. Please specify with -S");
+                ArgumentParser.PrintHelp();
                 return;
             }
             IResultContainer results;
