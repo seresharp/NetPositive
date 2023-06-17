@@ -12,4 +12,4 @@ Tool for mass scanning .Net Assembly files based on Signatures.
 
 ## Signatures
 
-Please see [the definitions README](Definitions/README.md) for a more complete description of how to define signatures.
+Please see [the definitions README](NetPositive/Definitions/Readme.md) for a more complete description of how to define signatures.
