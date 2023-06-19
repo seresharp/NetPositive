@@ -5,13 +5,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using System.ComponentModel;
 
 namespace NetPositive
 {
     class FileIterator : IEnumerable<string>
     {
         string[] basePaths;
-        string[] absBasePaths;
+        string[] resolvedBasePaths;
         bool recursive;
         bool allowPathEscape;
         public FileIterator(string[] basePaths, bool recursive, bool allowPathEscape)
@@ -19,10 +20,10 @@ namespace NetPositive
             this.basePaths = basePaths;
             this.recursive = recursive;
             this.allowPathEscape = allowPathEscape;
-            this.absBasePaths = new string[this.basePaths.Length];
-            for(int i=0; i<this.absBasePaths.Length; i++)
+            this.resolvedBasePaths = new string[this.basePaths.Length];
+            for (int i = 0; i < this.resolvedBasePaths.Length; i++)
             {
-                this.absBasePaths[i] = Path.GetFullPath(this.basePaths[i]);
+                this.resolvedBasePaths[i] = NativeMethods.GetFinalPathName(this.basePaths[i]);
             }
         }
 
@@ -35,15 +36,21 @@ namespace NetPositive
                 {
                     string newPath = subDirs[i];
                     string newAbsPath = Path.GetFullPath(subDirs[i]);
-                    if (!done.Contains(newPath) && !done.Contains(newAbsPath))
+                    string newResolvedPath = NativeMethods.GetFinalPathName(newAbsPath);
+                    if (!done.Contains(newPath) && !done.Contains(newAbsPath) && !done.Contains(newResolvedPath))
                     {
                         //Only enqueue if we allow not being in a sub path of a base path or if it is in such a sub path
-                        if (allowPathEscape || isBelowBasePath(newAbsPath))
+                        if (allowPathEscape || isBelowBasePath(newResolvedPath))
                             queue.Enqueue(newPath);
                         done.Add(newPath); //Add to done list here, so we don't ever need to slowly do linear search through the queue
                         done.Add(newAbsPath);
+                        done.Add(newResolvedPath);
                     }
                 }
+            }
+            catch (Win32Exception)
+            {
+                //Ignore Win32Exception, we probably errored due to access when resolving path
             }
             catch (UnauthorizedAccessException uae)
             {
@@ -60,17 +67,23 @@ namespace NetPositive
                 {
                     string newPath = files[i];
                     string newAbsPath = Path.GetFullPath(files[i]);
-                    if (!done.Contains(newPath) && !done.Contains(newAbsPath))
+                    string newResolvedPath = NativeMethods.GetFinalPathName(newAbsPath);
+                    if (!done.Contains(newPath) && !done.Contains(newAbsPath) && !done.Contains(newResolvedPath))
                     {
                         //Only enqueue if we allow not being in a sub path of a base path or if it is in such a sub path
-                        if (allowPathEscape || isBelowBasePath(newAbsPath))
+                        if (allowPathEscape || isBelowBasePath(newResolvedPath))
                             queue.Enqueue(newPath);
                         done.Add(newPath);
                         done.Add(newAbsPath);
+                        done.Add(newResolvedPath);
                     }
                 }
             }
-            catch(UnauthorizedAccessException uae)
+            catch (Win32Exception)
+            {
+                //Ignore Win32Exception, we probably errored due to access when resolving path
+            }
+            catch (UnauthorizedAccessException uae)
             {
                 //Ignore access violations, we don't need to spam the command line with errors we can't fix anyway
             }
@@ -80,11 +93,11 @@ namespace NetPositive
             }
         }
 
-        private bool isBelowBasePath(string absPath)
+        private bool isBelowBasePath(string resolvedPath)
         {
-            for(int i=0; i<absBasePaths.Length; i++)
+            for (int i = 0; i < resolvedBasePaths.Length; i++)
             {
-                if(absPath.StartsWith(absBasePaths[i]))
+                if (resolvedPath.StartsWith(resolvedBasePaths[i]))
                 {
                     return true;
                 }
@@ -95,16 +108,16 @@ namespace NetPositive
         public bool MatchesFilter(string path)
         {
             var ext = Path.GetExtension(path);
-            return ext==".exe" || ext==".dll";
+            return ext == ".exe" || ext == ".dll";
         }
 
         IEnumerator<string> IEnumerable<string>.GetEnumerator()
         {
             Queue<string> pendingPaths = new Queue<string>();
             HashSet<string> traversedPaths = new HashSet<string>();
-            foreach(var p in this.basePaths)
+            foreach (var p in this.basePaths)
                 pendingPaths.Enqueue(p);
-            while(pendingPaths.Count>0)
+            while (pendingPaths.Count > 0)
             {
                 string current = pendingPaths.Dequeue();
 
